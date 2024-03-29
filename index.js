@@ -1,8 +1,10 @@
 // Sample menu data (Consider fetching this data from a server in a real-world scenario)
 const menu = {
-    Starters: ["Garlic Bread", "Bruschetta"],
-    MainCourses: ["Margherita Pizza", "Spaghetti Carbonara"],
-    Desserts: ["Tiramisu", "Cheesecake"]
+    Starters: ["Arancini", "Stuffed Mushrooms"],
+    MainCourses: ["Fettuccine Alfredo", "Spaghetti Carbonara"],
+    Desserts: ["Tiramisu", "Cheesecake"],
+    SideDishes: ["Mashed Potatoes", "French Fries"],
+    Soups: ["Tomato Bisque", "Three Bean Chilli"]
 };
 
 // Function to display menu items by category
@@ -22,6 +24,7 @@ function displayMenuItems(menu) {
         const itemsList = document.createElement('ul');
         // Append a list of items element to the menu container
         menuContainer.appendChild(itemsList);
+
         // Loop through the items in the category and create list items
         items.forEach(item => {
             // Create a list item element
@@ -41,6 +44,7 @@ function addToOrder(itemName) {
     // Get the order items list and the order total element from the HTML
     const orderList = document.getElementById('order-items');
     const orderTotalElem = document.getElementById('order-total');
+
     // Create a list item for the order
     const orderItem = document.createElement('li');
     // Set the text content of the list item to the item name
@@ -54,6 +58,19 @@ function addToOrder(itemName) {
     const newTotal = currentTotal + itemPrice;
     // Update the text content of the order total element with the new total
     orderTotalElem.textContent = newTotal.toFixed(2)
+}
+
+// Function to remove an item from the order
+function removeFromOrder(orderItem, itemPrice) {
+    const orderTotalElem = document.getElementById('order-total');
+    const currentTotal = parseFloat(orderTotalElem.textContent);
+
+    // Remove item from the DOM
+    orderItem.remove();
+
+    // Update the total price
+    const newTotal = currentTotal - itemPrice;
+    orderTotalElem.textContent = newTotal.toFixed(2);
 }
 
 // Function to initialize the menu system
