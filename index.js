@@ -60,19 +60,6 @@ function addToOrder(itemName) {
     orderTotalElem.textContent = newTotal.toFixed(2)
 }
 
-// Function to remove an item from the order
-function removeFromOrder(orderItem, itemPrice) {
-    const orderTotalElem = document.getElementById('order-total');
-    const currentTotal = parseFloat(orderTotalElem.textContent);
-
-    // Remove item from the DOM
-    orderItem.remove();
-
-    // Update the total price
-    const newTotal = currentTotal - itemPrice;
-    orderTotalElem.textContent = newTotal.toFixed(2);
-}
-
 // Function to initialize the menu system
 function initMenuSystem(menu) {
     // Call the function to display menu items
